@@ -1,0 +1,9 @@
+KeepDisable
+ServerCertRegenerate sevpn
+ServerCipherSet TLS_AES_128_GCM_SHA256
+VpnAzureSetEnable no
+VpnOverIcmpDnsEnable /ICMP:no /DNS:no
+ProtoOptionsSet OpenVPN /NAME:Enabled /VALUE:false
+ProtoOptionsSet SSTP /NAME:Enabled /VALUE:false
+ProtoOptionsSet wireguard /NAME:Enabled /VALUE:true
+Flush

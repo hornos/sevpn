@@ -1,0 +1,5 @@
+data
+*.old
+docs
+deploy_*
+*.tgz
