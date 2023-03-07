@@ -1,7 +1,7 @@
 Roll Your Own VPN with SoftEther
 ---
-SoftEther is probably one of the best yet rather obscure VPNs. This brief guide gives you instructions 
-how to build and run SoftEther in a Docker container. 
+SoftEther is probably one of the best VPNs yet rather obscure. This guide gives you a short intro
+on how to build and run SoftEther in a Docker container. 
 
 *WARNING: Please mind that for production use you have to harden the VPN server. Do not let incomming 
 traffic unless you made proper configuration changes.*
@@ -124,7 +124,7 @@ docker stop sevpn
 # Wireguard Settings
 Create a new hub with ./vpncmd
 ```bash
-HubCreate wireguard /PASSWORD:None
+HubCreate wireguard /PASSWORD:none
 Hub wireguard
 SetEnumDeny
 SetMaxSession 256
@@ -133,12 +133,13 @@ SecureNatEnable
 Create a user with your client public key
 ```bash
 UserCreate test /GROUP:none /REALNAME:none /NOTE:none
-UserSignedSet test /CN:None /SERIAL:None
+UserSignedSet test /CN:none /SERIAL:none
 WgkAdd [CLIENT PUBLIC KEY] /HUB:wireguard /USER:test
 ProtoOptionsGet wireguard
 ```
 
 ## Client Settings
+You can use any kind of Wireguard client with the following simple config file:
 ```bash
 [Interface]
 PrivateKey = [SERVER PRIVATE KEY]
@@ -149,5 +150,5 @@ PublicKey = [SERVER PUBLIC KEY]
 PresharedKey = [SERVER PSK]
 AllowedIPs = 192.168.30.0/24
 Endpoint = [SERVER EXTERNAL IP]:5555
-PersistentKeepalive = 5
+PersistentKeepalive = 25
 ```
